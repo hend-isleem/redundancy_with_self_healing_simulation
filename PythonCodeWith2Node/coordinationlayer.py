@@ -11,6 +11,7 @@ MQTT_PORT = 1883
 NODE_TIMEOUT = 10000
 HEARTBEAT_INTERVAL = 5000  
 CONSENSUS_INTERVAL = 2000 
+MEDIAN_THRESHOLD = 10.0  # Threshold for detecting Byzantine faults
 
 # MQTT Topics
 TOPIC_SENSOR_1 = "esp32/system/sensor1/distance"
@@ -29,15 +30,19 @@ class NodeStatus:
     last_heartbeat: int = 0
     active: bool = False
     consistent_count: int = 0
+    fault_count: int = 0
+    quarantined: bool = False
 
 class MAPEKMQTTManager:
     def __init__(self):
         self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, "PythonManager")
         self.nodes: Dict[int, NodeStatus] = {
             1: NodeStatus(node_id=1),
-            2: NodeStatus(node_id=2)
+            2: NodeStatus(node_id=2),
+            3: NodeStatus(node_id=3)
         }
-        self.regesterd_nodes = len(self.nodes)
+        self.registered_nodes = len(self.nodes)
+        self.majority_size = 2  # Majority of 3 nodes
         
         self.last_heartbeat = 0
         self.last_health_check = 0
@@ -106,8 +111,8 @@ class MAPEKMQTTManager:
         return int(time.time() * 1000)
 
     def get_active_node_count(self) -> int:
-        """Count how many nodes are currently active"""
-        return sum(1 for node in self.nodes.values() if node.active)
+        """Count how many nodes are currently active and not quarantined"""
+        return sum(1 for node in self.nodes.values() if node.active and not node.quarantined)
 
     def analyze_and_plan(self):
         """ANALYZE & PLAN: Check node health and data consistency"""
@@ -121,55 +126,67 @@ class MAPEKMQTTManager:
                 self.client.publish(TOPIC_COMMAND, command)
                 self.logger.info(f"[PLAN] Sent reboot command for node {node_id}")
             
-            if node.active and self.get_active_node_count() >= self.regesterd_nodes:
+            if node.active and not node.quarantined:
                 self.check_data_consistency(node_id, current_time)
 
     def check_data_consistency(self, node_id: int, current_time: int):
-        """Check data consistency between active nodes using voting"""
-        #  TODO: Maybe we can add a third node for the voting system to be valid
-        current_node = self.nodes[node_id]
-        other_node_id = 2 if node_id == 1 else 1
-        other_node = self.nodes[other_node_id]
+        """Check data consistency using majority voting with 3 nodes"""
+        active_nodes = [n for n in self.nodes.values() if n.active and not n.quarantined]
         
-        if other_node.active:
-            distance_diff = abs(current_node.distance - other_node.distance)
+        if len(active_nodes) < self.majority_size:
+            self.logger.warning(f"[ANALYZE] Insufficient nodes for majority decision ({len(active_nodes)}/{self.majority_size})")
+            return
             
-            if distance_diff < 5.0:  #Within 5cm is considered consistent
-                current_node.consistent_count += 1
-                if current_node.consistent_count >= 3:
-                    self.logger.info(f"[ANALYZE] Nodes {node_id} and {other_node_id} data CONSISTENT")
-            else:
-                current_node.consistent_count = 0
-                self.logger.warning(f"[ANALYZE] Data INCONSISTENT - Node {node_id}: {current_node.distance:.2f} cm, "
-                                  f"Node {other_node_id}: {other_node.distance:.2f} cm, Diff: {distance_diff:.2f} cm")
+        distances = [node.distance for node in active_nodes if node.distance > 0]
+        if len(distances) < self.majority_size:
+            return
+            
+        # Byzantine fault tolerance: detect outliers
+        outliers = self.detect_byzantine_faults(distances, active_nodes)
+        
+        if outliers:
+            for outlier_node in outliers:
+                outlier_node.fault_count += 1
+                self.logger.warning(f"[ANALYZE] Byzantine fault detected in Node {outlier_node.node_id}")
                 
-                if current_time - self.last_consensus_publish > CONSENSUS_INTERVAL:
-                    self.handle_data_discrepancy(node_id, other_node_id)
+                if outlier_node.fault_count >= 3:
+                    self.quarantine_node(outlier_node)
+        
+        if current_time - self.last_consensus_publish > CONSENSUS_INTERVAL:
+            self.publish_consensus()
 
-    def handle_data_discrepancy(self, node1_id: int, node2_id: int):
-        """PLAN: Handle data discrepancies between nodes"""
-        node1 = self.nodes[node1_id]
-        node2 = self.nodes[node2_id]
+    def detect_byzantine_faults(self, distances: List[float], nodes: List[NodeStatus]) -> List[NodeStatus]:
+        """Detect Byzantine faults using statistical analysis"""
+ 
+        median_distance = sorted(distances)[len(distances)//2]
+        outliers = []
         
-        consensus_distance = (node1.distance + node2.distance) / 2
-        self.publish_consensus(consensus_distance)
-        
-        self.logger.info(f"[PLAN] Using average consensus due to discrepancy: {consensus_distance:.2f} cm")
-        
-        #Could implement more sophisticated strategies here
+        for i, distance in enumerate(distances):
+            if abs(distance - median_distance) > MEDIAN_THRESHOLD:  # 10cm threshold
+                outliers.append(nodes[i])
+                
+        return outliers
+    
+    def quarantine_node(self, node: NodeStatus):
+        """Quarantine a faulty node"""
+        node.quarantined = True
+        self.logger.warning(f"[PLAN] Node {node.node_id} QUARANTINED due to repeated faults")
+        command = f"QUARANTINE:{node.node_id}"
+        self.client.publish(TOPIC_COMMAND, command)
 
     def calculate_consensus(self) -> Optional[float]:
-        """Calculate consensus distance from active nodes"""
-        active_nodes = [node for node in self.nodes.values() if node.active and node.distance > 0] # TODO: this can be a function 
+        """Calculate consensus using majority voting"""
+        active_nodes = [node for node in self.nodes.values() 
+                       if node.active and not node.quarantined and node.distance > 0]
         
-        if not active_nodes:
+        if len(active_nodes) < self.majority_size:
             return None
+            
+        distances = [node.distance for node in active_nodes]
         
-        if len(active_nodes) == 1:
-            return active_nodes[0].distance
-        else:
-            total_distance = sum(node.distance for node in active_nodes)
-            return total_distance / len(active_nodes)
+        # Use median for Byzantine fault tolerance
+        distances.sort()
+        return distances[len(distances)//2]
 
     def publish_consensus(self, consensus: Optional[float] = None):
         """EXECUTE: Publish consensus distance"""
@@ -222,7 +239,7 @@ class MAPEKMQTTManager:
             while True:
                 self.publish_heartbeat()
                 self.run_mape_loop()
-                time.sleep(0.1) 
+                time.sleep(5) 
                 
         except KeyboardInterrupt:
             self.logger.info("Shutting down MAPE-K Manager")

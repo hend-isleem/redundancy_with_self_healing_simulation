@@ -16,6 +16,7 @@ class SimulatedNode:
         noise_amplitude: float = 2.0,
         heartbeat_interval_ms: int = 3000,
         distance_interval_ms: int = 1000,
+        fault_mode: str = "normal",
     ):
         """
         A simulated sensor node that:
@@ -28,6 +29,7 @@ class SimulatedNode:
         self.noise_amplitude = noise_amplitude
         self.heartbeat_interval_ms = heartbeat_interval_ms
         self.distance_interval_ms = distance_interval_ms
+        self.fault_mode = fault_mode
 
         # MQTT topics specific to this node
         self.sensor_topic = f"esp32/system/sensor{self.node_id}/distance"
@@ -39,11 +41,12 @@ class SimulatedNode:
 
         # Simple "running" flag to simulate reboot etc.
         self._running = True
+        self._quarantined = False
 
         # Setup logging
         logging.basicConfig(
             level=logging.INFO,
-            format="%(asctime)s - NODE%(node_id)d - %(levelname)s - %(message)s"
+            format="%(asctime)s - NODE:%(name)s - %(levelname)s - %(message)s"
         )
         # Add node_id to log records
         self.logger = logging.getLogger(f"SimulatedNode{self.node_id}")
@@ -77,18 +80,27 @@ class SimulatedNode:
 
             self.logger.info(f"Received message on {topic}: {payload}")
 
-            if topic == TOPIC_COMMAND and payload.startswith("REBOOT:"):
-                try:
-                    target_id = int(payload.split(":")[1])
-                    if target_id == self.node_id:
-                        self.logger.warning("Received REBOOT command for this node")
-                        self.reboot()
-                except ValueError:
-                    self.logger.warning(f"Invalid REBOOT command payload: {payload}")
+            if topic == TOPIC_COMMAND:
+                if payload.startswith("REBOOT:"):
+                    try:
+                        target_id = int(payload.split(":")[1])
+                        if target_id == self.node_id:
+                            self.logger.warning("Received REBOOT command for this node")
+                            self.reboot()
+                    except ValueError:
+                        self.logger.warning(f"Invalid REBOOT command payload: {payload}")
+                elif payload.startswith("QUARANTINE:"):
+                    try:
+                        target_id = int(payload.split(":")[1])
+                        if target_id == self.node_id:
+                            self.logger.warning("Node quarantined by manager")
+                            self._quarantined = True
+                    except ValueError:
+                        self.logger.warning(f"Invalid QUARANTINE command payload: {payload}")
         except Exception as e:
             self.logger.error(f"Error in on_message: {e}")
 
-    def on_disconnect(self, client, userdata, rc, properties):
+    def on_disconnect(self, client, userdata, df, rc, properties):
         self.logger.warning("Disconnected from MQTT broker")
 
     # ---------- Node behavior ----------
@@ -98,10 +110,21 @@ class SimulatedNode:
 
     def generate_distance(self) -> float:
         """
-        Simple distance model:
-        base_distance + small random noise
-        You can later extend this for fault modes.
+        Distance model with fault injection capabilities
         """
+        if self.fault_mode == "byzantine":
+            # Generate completely wrong readings
+            return random.uniform(100, 200)
+        elif self.fault_mode == "drift":
+            # Gradual drift from correct value
+            drift = time.time() % 100  # Increases over time
+            return self.base_distance + drift
+        elif self.fault_mode == "intermittent":
+            # Occasionally send wrong data
+            if random.random() < 0.3:  # 30% chance of fault
+                return self.base_distance + random.uniform(50, 100)
+        
+        # Normal operation
         noise = random.uniform(-self.noise_amplitude, self.noise_amplitude)
         return self.base_distance + noise
 
@@ -146,7 +169,7 @@ class SimulatedNode:
             while True:
                 now = self.get_current_time_ms()
 
-                if self._running:
+                if self._running and not self._quarantined:
                     # distance publishing
                     if now - self._last_distance_pub >= self.distance_interval_ms:
                         self.publish_distance()
@@ -156,6 +179,9 @@ class SimulatedNode:
                     if now - self._last_heartbeat >= self.heartbeat_interval_ms:
                         self.publish_heartbeat()
                         self._last_heartbeat = now
+                elif self._quarantined:
+                    self.logger.info("Node quarantined, not publishing data")
+                    time.sleep(5)  # Wait before checking again
 
                 time.sleep(0.1)
 
