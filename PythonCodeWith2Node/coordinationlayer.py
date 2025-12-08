@@ -5,6 +5,21 @@ from typing import Dict, List, Optional
 from dataclasses import dataclass
 import logging
 
+# Source - https://stackoverflow.com/a
+# Posted by joeld, modified by community. See post 'Timeline' for change history
+# Retrieved 2025-11-19, License - CC BY-SA 4.0
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 #Configuration
 MQTT_BROKER = "broker.hivemq.com"
 MQTT_PORT = 1883
@@ -67,9 +82,9 @@ class MAPEKMQTTManager:
                 (TOPIC_HEARTBEAT_2, 0),
                 (TOPIC_HEARTBEAT_3, 0)
             ])
-            self.logger.info("Subscribed to topics")
+            self.logger.info(f"{bcolors.OKGREEN}Subscribed to topics{bcolors.ENDC}")
         else:
-            self.logger.error(f"Failed to connect to MQTT broker, return code {rc}")
+            self.logger.error(f"{bcolors.FAIL}Failed to connect to MQTT broker, return code {rc}{bcolors.ENDC}")
 
     def on_message(self, client, userdata, msg):
         """MONITOR: Handle incoming MQTT messages"""
@@ -88,7 +103,7 @@ class MAPEKMQTTManager:
                         self.nodes[node_id].distance = distance
                         self.logger.info(f"[MONITOR] Node {node_id} distance: {distance:.2f} cm")
                     except ValueError:
-                        self.logger.warning(f"[MONITOR] Invalid distance value from node {node_id}: {payload}")
+                        self.logger.warning(f"{bcolors.WARNING}[MONITOR] Invalid distance value from node {node_id}: {payload}{bcolors.ENDC}")
             
             elif "heartbeat" in topic:
                 node_id = int(topic[-1])
@@ -98,13 +113,13 @@ class MAPEKMQTTManager:
                     self.logger.info(f"[MONITOR] Node {node_id} heartbeat received")
                     
         except Exception as e:
-            self.logger.error(f"[MONITOR] Error processing message: {e}")
+            self.logger.error(f"{bcolors.FAIL}[MONITOR] Error processing message: {e}{bcolors.ENDC}")
 
     def on_disconnect(self, client, userdata, df, rc, properties):
         """Handle disconnection from MQTT broker"""
-        self.logger.warning("Disconnected from MQTT broker")
+        self.logger.warning(f"{bcolors.WARNING}Disconnected from MQTT broker{bcolors.ENDC}")
         if rc != 0:
-            self.logger.warning("Unexpected disconnection, attempting reconnect")
+            self.logger.warning(f"{bcolors.WARNING}Unexpected disconnection, attempting reconnect{bcolors.ENDC}")
 
     def get_current_time(self) -> int:
         """Get current time in milliseconds"""
@@ -120,7 +135,7 @@ class MAPEKMQTTManager:
         
         for node_id, node in self.nodes.items():
             if node.active and (current_time - node.last_heartbeat) > NODE_TIMEOUT:
-                self.logger.warning(f"[ANALYZE] Node {node_id} FAILED - No heartbeat for {current_time - node.last_heartbeat} ms")
+                self.logger.warning(f"{bcolors.WARNING}[ANALYZE] Node {node_id} FAILED - No heartbeat for {current_time - node.last_heartbeat} ms{bcolors.ENDC}")
                 node.active = False
                 command = f"REBOOT:{node_id}"
                 self.client.publish(TOPIC_COMMAND, command)
@@ -170,7 +185,7 @@ class MAPEKMQTTManager:
     def quarantine_node(self, node: NodeStatus):
         """Quarantine a faulty node"""
         node.quarantined = True
-        self.logger.warning(f"[PLAN] Node {node.node_id} QUARANTINED due to repeated faults")
+        self.logger.warning(f"{bcolors.WARNING}[PLAN] Node {node.node_id} QUARANTINED due to repeated faults{bcolors.ENDC}")
         command = f"QUARANTINE:{node.node_id}"
         self.client.publish(TOPIC_COMMAND, command)
 
@@ -196,10 +211,10 @@ class MAPEKMQTTManager:
         if consensus is not None and consensus > 0:
             self.client.publish(TOPIC_CONSENSUS, f"{consensus:.2f}")
             active_count = self.get_active_node_count()
-            self.logger.info(f"[EXECUTE] Consensus distance: {consensus:.2f} cm (Active nodes: {active_count})")
+            self.logger.info(f"{bcolors.OKGREEN}[EXECUTE] Consensus distance: {consensus:.2f} cm (Active nodes: {active_count}){bcolors.ENDC}")
             self.last_consensus_publish = self.get_current_time()
         else:
-            self.logger.warning("[EXECUTE] No valid consensus available")
+            self.logger.warning(f"{bcolors.WARNING}[EXECUTE] No valid consensus available{bcolors.ENDC}")
 
     def publish_heartbeat(self):
         """Publish manager heartbeat"""
@@ -221,10 +236,10 @@ class MAPEKMQTTManager:
     def connect(self):
         """Connect to MQTT broker"""
         try:
-            self.logger.info(f"Connecting to MQTT broker at {MQTT_BROKER}:{MQTT_PORT}")
+            self.logger.info(f"{bcolors.OKGREEN}Connecting to MQTT broker at {MQTT_BROKER}:{MQTT_PORT}{bcolors.ENDC}")
             self.client.connect(MQTT_BROKER, MQTT_PORT, 60)
         except Exception as e:
-            self.logger.error(f"Failed to connect to MQTT broker: {e}")
+            self.logger.error(f"{bcolors.FAIL}Failed to connect to MQTT broker: {e}{bcolors.ENDC}")
             raise
 
     def start(self):
@@ -232,17 +247,17 @@ class MAPEKMQTTManager:
         self.connect()
         self.client.loop_start()
         
-        self.logger.info("MAPE-K Manager started")
-        self.logger.info("Using Dual Modular Redundancy with 2 worker nodes")
+        self.logger.info(f"{bcolors.OKGREEN}MAPE-K Manager started{bcolors.ENDC}")
+        self.logger.info(f"{bcolors.OKGREEN}Using Dual Modular Redundancy with 3 worker nodes{bcolors.ENDC}")
         
         try:
             while True:
                 self.publish_heartbeat()
                 self.run_mape_loop()
-                time.sleep(5) 
+                time.sleep(2) 
                 
         except KeyboardInterrupt:
-            self.logger.info("Shutting down MAPE-K Manager")
+            self.logger.info(f"{bcolors.FAIL}Shutting down MAPE-K Manager{bcolors.ENDC}")
             self.client.loop_stop()
             self.client.disconnect()
 
