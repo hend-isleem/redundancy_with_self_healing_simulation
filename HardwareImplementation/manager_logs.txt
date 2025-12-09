@@ -1,0 +1,343 @@
+18:24:50.984 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:24:51.016 -> [MONITOR] Node 1 heartbeat received
+18:24:51.701 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:24:51.701 -> [MONITOR] Node 1 distance: 15.44 cm
+18:24:52.449 -> [MONITOR] Received: 16.59 from esp32/system/sensor2/distance
+18:24:52.449 -> [MONITOR] Node 2 distance: 16.59 cm
+18:24:52.542 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:24:52.542 -> [MONITOR] Node 2 heartbeat received
+18:24:52.769 -> [EXECUTE] Consensus distance: 16.01 cm (Active nodes: 2)
+18:24:54.801 -> [EXECUTE] Consensus distance: 16.01 cm (Active nodes: 2)
+18:24:55.393 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:24:55.593 -> [MONITOR] Received: 15.45 from esp32/system/sensor1/distance
+18:24:55.593 -> [MONITOR] Node 1 distance: 15.45 cm
+18:24:56.001 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:24:56.037 -> [MONITOR] Node 1 heartbeat received
+18:24:56.453 -> [MONITOR] Received: 16.61 from esp32/system/sensor2/distance
+18:24:56.453 -> [MONITOR] Node 2 distance: 16.61 cm
+18:24:56.810 -> [EXECUTE] Consensus distance: 16.03 cm (Active nodes: 2)
+18:24:57.463 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:24:57.463 -> [MONITOR] Node 2 heartbeat received
+18:24:58.769 -> [EXECUTE] Consensus distance: 16.03 cm (Active nodes: 2)
+18:24:59.592 -> [MONITOR] Received: 15.45 from esp32/system/sensor1/distance
+18:24:59.592 -> [MONITOR] Node 1 distance: 15.45 cm
+18:25:00.448 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:25:00.713 -> [MONITOR] Received: 16.59 from esp32/system/sensor2/distance
+18:25:00.713 -> [MONITOR] Node 2 distance: 16.59 cm
+18:25:00.805 -> [EXECUTE] Consensus distance: 16.02 cm (Active nodes: 2)
+18:25:01.024 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:25:01.024 -> [MONITOR] Node 1 heartbeat received
+18:25:02.349 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:25:02.385 -> [MONITOR] Node 2 heartbeat received
+18:25:02.805 -> [EXECUTE] Consensus distance: 16.02 cm (Active nodes: 2)
+18:25:03.577 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:25:03.615 -> [MONITOR] Node 1 distance: 15.44 cm
+18:25:04.402 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:25:04.440 -> [MONITOR] Node 2 distance: 16.56 cm
+18:25:04.812 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:25:05.353 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:25:06.042 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:25:06.042 -> [MONITOR] Node 1 heartbeat received
+18:25:06.769 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:25:07.408 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:25:07.408 -> [MONITOR] Node 2 heartbeat received
+18:25:07.547 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:25:07.547 -> [MONITOR] Node 1 distance: 15.44 cm
+18:25:08.428 -> [MONITOR] Received: 16.59 from esp32/system/sensor2/distance
+18:25:08.428 -> [MONITOR] Node 2 distance: 16.59 cm
+18:25:08.815 -> [EXECUTE] Consensus distance: 16.01 cm (Active nodes: 2)
+18:25:10.370 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:25:10.769 -> [EXECUTE] Consensus distance: 16.01 cm (Active nodes: 2)
+18:25:11.087 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:25:11.087 -> [MONITOR] Node 1 heartbeat received
+18:25:11.692 -> [MONITOR] Received: 15.45 from esp32/system/sensor1/distance
+18:25:11.692 -> [MONITOR] Node 1 distance: 15.45 cm
+18:25:12.419 -> [MONITOR] Received: 16.61 from esp32/system/sensor2/distance
+18:25:12.419 -> [MONITOR] Node 2 distance: 16.61 cm
+18:25:12.791 -> [EXECUTE] Consensus distance: 16.03 cm (Active nodes: 2)
+18:25:23.549 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:25:23.549 -> [MONITOR] Node 1 distance: 15.44 cm
+18:25:24.368 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:25:24.368 -> [MONITOR] Node 2 distance: 16.56 cm
+18:25:24.771 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:25:25.397 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:25:26.041 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:25:26.041 -> [MONITOR] Node 1 heartbeat received
+18:25:26.771 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:25:27.439 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:25:27.484 -> [MONITOR] Node 2 heartbeat received
+18:25:27.577 -> [MONITOR] Received: 15.45 from esp32/system/sensor1/distance
+18:25:27.577 -> [MONITOR] Node 1 distance: 15.45 cm
+18:25:28.507 -> [MONITOR] Received: 16.59 from esp32/system/sensor2/distance
+18:25:28.507 -> [MONITOR] Node 2 distance: 16.59 cm
+18:25:28.803 -> [EXECUTE] Consensus distance: 16.02 cm (Active nodes: 2)
+18:25:30.434 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:25:30.806 -> [EXECUTE] Consensus distance: 16.02 cm (Active nodes: 2)
+18:25:31.058 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:25:31.058 -> [MONITOR] Node 1 heartbeat received
+18:25:31.664 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:25:31.664 -> [MONITOR] Node 1 distance: 15.44 cm
+18:25:32.354 -> [MONITOR] Received: 16.59 from esp32/system/sensor2/distance
+18:25:32.390 -> [MONITOR] Node 2 distance: 16.59 cm
+18:25:32.810 -> [EXECUTE] Consensus distance: 16.01 cm (Active nodes: 2)
+18:25:32.996 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:25:32.996 -> [MONITOR] Node 2 heartbeat received
+18:25:34.771 -> [EXECUTE] Consensus distance: 16.01 cm (Active nodes: 2)
+18:25:35.325 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:25:35.527 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:25:35.561 -> [MONITOR] Node 1 distance: 15.44 cm
+18:25:36.041 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:25:36.088 -> [MONITOR] Node 1 heartbeat received
+18:25:36.452 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:25:36.491 -> [MONITOR] Node 2 distance: 16.56 cm
+18:25:36.768 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:25:37.408 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:25:37.408 -> [MONITOR] Node 2 heartbeat received
+18:25:38.768 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:25:39.555 -> [MONITOR] Received: 15.45 from esp32/system/sensor1/distance
+18:25:39.555 -> [MONITOR] Node 1 distance: 15.45 cm
+18:25:40.380 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:25:40.380 -> [MONITOR] Received: 16.59 from esp32/system/sensor2/distance
+18:25:40.380 -> [MONITOR] Node 2 distance: 16.59 cm
+18:25:40.785 -> [EXECUTE] Consensus distance: 16.02 cm (Active nodes: 2)
+18:25:40.965 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:25:41.001 -> [MONITOR] Node 1 heartbeat received
+18:25:42.432 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:25:42.432 -> [MONITOR] Node 2 heartbeat received
+18:25:42.803 -> [EXECUTE] Consensus distance: 16.02 cm (Active nodes: 2)
+18:25:43.550 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:25:43.550 -> [MONITOR] Node 1 distance: 15.44 cm
+18:25:44.469 -> [MONITOR] Received: 16.61 from esp32/system/sensor2/distance
+18:26:02.768 -> [EXECUTE] Consensus distance: 15.99 cm (Active nodes: 2)
+18:26:04.807 -> [EXECUTE] Consensus distance: 15.99 cm (Active nodes: 2)
+18:26:05.352 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:26:06.768 -> [EXECUTE] Consensus distance: 15.99 cm (Active nodes: 2)
+18:26:08.794 -> [EXECUTE] Consensus distance: 15.99 cm (Active nodes: 2)
+18:26:10.376 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:26:10.768 -> [EXECUTE] Consensus distance: 15.99 cm (Active nodes: 2)
+18:26:12.766 -> [ANALYZE] Node 1 FAILED - No heartbeat for 11740 ms
+18:26:12.799 -> [ANALYZE] Node 2 FAILED - No heartbeat for 10307 ms
+18:26:15.411 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:26:19.590 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:26:19.590 -> [MONITOR] Node 1 distance: 15.44 cm
+18:26:20.381 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:26:20.415 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:26:20.415 -> [MONITOR] Node 2 distance: 16.56 cm
+18:26:20.509 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:26:20.509 -> [RECOVERY] Node 1 recovered in 129716 ms
+18:26:20.509 -> [MONITOR] Node 1 heartbeat received
+18:26:20.788 -> [EXECUTE] Consensus distance: 15.44 cm (Active nodes: 1)
+18:26:21.516 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:26:21.549 -> [RECOVERY] Node 2 recovered in 130748 ms
+18:26:21.549 -> [MONITOR] Node 2 heartbeat received
+18:26:22.790 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:26:23.554 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:26:23.600 -> [MONITOR] Node 1 distance: 15.44 cm
+18:26:24.379 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:26:24.379 -> [MONITOR] Node 2 distance: 16.56 cm
+18:26:24.780 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:26:25.540 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:26:25.540 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:26:25.540 -> [MONITOR] Node 1 heartbeat received
+18:26:26.323 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:26:26.365 -> [MONITOR] Node 2 heartbeat received
+18:26:26.767 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:26:27.576 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:26:27.576 -> [MONITOR] Node 1 distance: 15.44 cm
+18:26:28.396 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:26:28.396 -> [MONITOR] Node 2 distance: 16.56 cm
+18:26:28.813 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:26:30.313 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:26:30.524 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:26:30.524 -> [MONITOR] Node 1 heartbeat received
+18:26:30.803 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:26:31.363 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:26:31.363 -> [MONITOR] Node 2 heartbeat received
+18:26:31.580 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:26:31.580 -> [MONITOR] Node 1 distance: 15.44 cm
+18:26:32.362 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:26:32.401 -> [MONITOR] Node 2 distance: 16.56 cm
+18:26:32.767 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:26:34.795 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:26:35.341 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:26:35.536 -> [MONITOR] Received: 15.45 from esp32/system/sensor1/distance
+18:26:35.573 -> [MONITOR] Node 1 distance: 15.45 cm
+18:26:35.747 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:26:35.747 -> [MONITOR] Node 1 heartbeat received
+18:26:36.380 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:26:36.380 -> [MONITOR] Node 2 distance: 16.56 cm
+18:26:36.798 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:26:36.830 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:26:42.797 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:26:43.525 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:26:43.559 -> [MONITOR] Node 1 distance: 15.44 cm
+18:26:44.385 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:26:44.385 -> [MONITOR] Node 2 distance: 16.56 cm
+18:26:44.804 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:26:45.384 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:26:45.474 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:26:45.508 -> [MONITOR] Node 1 heartbeat received
+18:26:46.426 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:26:46.426 -> [MONITOR] Node 2 heartbeat received
+18:26:46.798 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:26:47.562 -> [MONITOR] Received: 3.77 from esp32/system/sensor1/distance
+18:26:47.562 -> [MONITOR] Node 1 distance: 3.77 cm
+18:26:48.338 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:26:48.338 -> [MONITOR] Node 2 distance: 16.56 cm
+18:26:48.802 -> [ANALYZE] Node 1 data INCONSISTENT: 3.77 cm
+18:26:48.802 -> [PLAN] Sent reboot command for node 1
+18:26:48.802 -> [ANALYZE] Node 2 data INCONSISTENT: 16.56 cm
+18:26:48.802 -> [PLAN] Sent reboot command for node 2
+18:26:48.802 -> [EXECUTE] Consensus distance: 10.16 cm (Active nodes: 2)
+18:26:50.385 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:26:50.779 -> [ANALYZE] Node 1 data INCONSISTENT: 3.77 cm
+18:26:50.779 -> [PLAN] Sent reboot command for node 1
+18:26:50.779 -> [ANALYZE] Node 2 data INCONSISTENT: 16.56 cm
+18:26:50.779 -> [PLAN] Sent reboot command for node 2
+18:26:50.779 -> [EXECUTE] Consensus distance: 10.16 cm (Active nodes: 2)
+18:26:52.782 -> [ANALYZE] Node 1 data INCONSISTENT: 3.77 cm
+18:26:52.782 -> [PLAN] Sent reboot command for node 1
+18:26:52.782 -> [ANALYZE] Node 2 data INCONSISTENT: 16.56 cm
+18:26:52.782 -> [PLAN] Sent reboot command for node 2
+18:26:52.782 -> [EXECUTE] Consensus distance: 10.16 cm (Active nodes: 2)
+18:26:54.802 -> [ANALYZE] Node 1 data INCONSISTENT: 3.77 cm
+18:26:54.802 -> [PLAN] Sent reboot command for node 1
+18:26:54.802 -> [ANALYZE] Node 2 data INCONSISTENT: 16.56 cm
+18:26:54.802 -> [PLAN] Sent reboot command for node 2
+18:26:54.802 -> [EXECUTE] Consensus distance: 10.16 cm (Active nodes: 2)
+18:26:55.439 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:26:56.765 -> [ANALYZE] Node 1 FAILED - No heartbeat for 11292 ms
+18:26:56.807 -> [ANALYZE] Node 2 FAILED - No heartbeat for 10377 ms
+18:26:57.987 -> [MONITOR] Received: 15.45 from esp32/system/sensor1/distance
+18:26:57.987 -> [MONITOR] Node 1 distance: 15.45 cm
+18:26:58.298 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:26:58.298 -> [MONITOR] Node 2 distance: 16.56 cm
+18:26:58.985 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:26:59.028 -> [RECOVERY] Node 1 recovered in 4219 ms
+18:26:59.028 -> [MONITOR] Node 1 heartbeat received
+18:26:59.122 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:26:59.122 -> [RECOVERY] Node 2 recovered in 4310 ms
+18:26:59.122 -> [MONITOR] Node 2 heartbeat received
+18:27:04.112 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:27:04.112 -> [MONITOR] Node 2 heartbeat received
+18:27:04.785 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:27:05.361 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:27:05.979 -> [MONITOR] Received: 15.45 from esp32/system/sensor1/distance
+18:27:05.979 -> [MONITOR] Node 1 distance: 15.45 cm
+18:27:06.120 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:27:06.120 -> [MONITOR] Node 2 distance: 16.56 cm
+18:27:06.767 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:27:08.806 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:27:08.977 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:27:08.977 -> [MONITOR] Node 1 heartbeat received
+18:27:09.116 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:27:09.116 -> [MONITOR] Node 2 heartbeat received
+18:27:09.943 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:27:09.986 -> [MONITOR] Node 1 distance: 15.44 cm
+18:27:10.126 -> [MONITOR] Received: 16.54 from esp32/system/sensor2/distance
+18:27:10.126 -> [MONITOR] Node 2 distance: 16.54 cm
+18:27:10.390 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:27:10.795 -> [EXECUTE] Consensus distance: 15.99 cm (Active nodes: 2)
+18:27:12.766 -> [EXECUTE] Consensus distance: 15.99 cm (Active nodes: 2)
+18:27:14.074 -> [MONITOR] Received: 15.45 from esp32/system/sensor1/distance
+18:27:14.074 -> [MONITOR] Node 1 distance: 15.45 cm
+18:27:14.119 -> [MONITOR] Received: 16.61 from esp32/system/sensor2/distance
+18:27:14.119 -> [MONITOR] Node 2 distance: 16.61 cm
+18:27:14.291 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:27:14.291 -> [MONITOR] Node 1 heartbeat received
+18:27:14.758 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:27:14.791 -> [MONITOR] Node 2 heartbeat received
+18:27:14.791 -> [EXECUTE] Consensus distance: 16.03 cm (Active nodes: 2)
+18:27:15.398 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:27:16.766 -> [EXECUTE] Consensus distance: 16.03 cm (Active nodes: 2)
+18:27:18.055 -> [MONITOR] Received: 15.40 from esp32/system/sensor1/distance
+18:27:18.055 -> [MONITOR] Node 1 distance: 15.40 cm
+18:27:18.086 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:27:18.086 -> [MONITOR] Node 2 distance: 16.56 cm
+18:27:18.766 -> [EXECUTE] Consensus distance: 15.98 cm (Active nodes: 2)
+18:27:18.955 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:27:18.991 -> [MONITOR] Node 1 heartbeat received
+18:27:19.080 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:27:19.114 -> [MONITOR] Node 2 heartbeat received
+18:27:20.413 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:27:20.788 -> [EXECUTE] Consensus distance: 15.98 cm (Active nodes: 2)
+18:27:22.032 -> [MONITOR] Received: 15.45 from esp32/system/sensor1/distance
+18:27:22.032 -> [MONITOR] Node 1 distance: 15.45 cm
+18:27:22.108 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:27:22.108 -> [MONITOR] Node 2 distance: 16.56 cm
+18:27:22.791 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:27:23.995 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:27:23.995 -> [MONITOR] Node 1 heartbeat received
+18:27:24.082 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:27:24.121 -> [MONITOR] Node 2 heartbeat received
+18:27:24.766 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:27:25.406 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:27:26.019 -> [MONITOR] Received: 15.39 from esp32/system/sensor1/distance
+18:27:26.061 -> [MONITOR] Node 1 distance: 15.39 cm
+18:27:26.108 -> [MONITOR] Received: 2.91 from esp32/system/sensor2/distance
+18:27:26.804 -> [ANALYZE] Node 2 data INCONSISTENT: 2.91 cm
+18:27:26.804 -> [PLAN] Sent reboot command for node 2
+18:27:26.804 -> [EXECUTE] Consensus distance: 9.15 cm (Active nodes: 2)
+18:27:28.795 -> [ANALYZE] Node 1 data INCONSISTENT: 15.39 cm
+18:27:28.795 -> [PLAN] Sent reboot command for node 1
+18:27:28.795 -> [ANALYZE] Node 2 data INCONSISTENT: 2.91 cm
+18:27:28.795 -> [PLAN] Sent reboot command for node 2
+18:27:28.795 -> [EXECUTE] Consensus distance: 9.15 cm (Active nodes: 2)
+18:27:30.348 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:27:30.765 -> [ANALYZE] Node 1 data INCONSISTENT: 15.39 cm
+18:27:30.798 -> [PLAN] Sent reboot command for node 1
+18:27:30.798 -> [ANALYZE] Node 2 data INCONSISTENT: 2.91 cm
+18:27:30.798 -> [PLAN] Sent reboot command for node 2
+18:27:30.798 -> [EXECUTE] Consensus distance: 9.15 cm (Active nodes: 2)
+18:27:32.765 -> [ANALYZE] Node 1 data INCONSISTENT: 15.39 cm
+18:27:32.804 -> [PLAN] Sent reboot command for node 1
+18:27:32.804 -> [ANALYZE] Node 2 data INCONSISTENT: 2.91 cm
+18:27:32.804 -> [PLAN] Sent reboot command for node 2
+18:27:32.804 -> [EXECUTE] Consensus distance: 9.15 cm (Active nodes: 2)
+18:27:34.771 -> [ANALYZE] Node 1 FAILED - No heartbeat for 10790 ms
+18:27:34.771 -> [ANALYZE] Node 2 FAILED - No heartbeat for 10683 ms
+18:27:35.365 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:27:38.868 -> [MONITOR] Received: 15.45 from esp32/system/sensor1/distance
+18:27:38.868 -> [MONITOR] Node 1 distance: 15.45 cm
+18:27:38.868 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:27:38.868 -> [RECOVERY] Node 1 recovered in 6068 ms
+18:27:38.868 -> [MONITOR] Node 1 heartbeat received
+18:27:40.387 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:27:40.792 -> [EXECUTE] Consensus distance: 15.45 cm (Active nodes: 1)
+18:27:42.344 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:27:42.344 -> [RECOVERY] Node 2 recovered in 9542 ms
+18:27:42.344 -> [MONITOR] Node 2 heartbeat received
+18:27:42.344 -> [MONITOR] Received: 16.61 from esp32/system/sensor2/distance
+18:27:42.344 -> [MONITOR] Node 2 distance: 16.61 cm
+18:27:42.610 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:27:42.654 -> [MONITOR] Node 1 distance: 15.44 cm
+18:27:42.766 -> [EXECUTE] Consensus distance: 16.02 cm (Active nodes: 2)
+18:27:42.921 -> [MONITOR] Received: 16.59 from esp32/system/sensor2/distance
+18:27:42.921 -> [MONITOR] Node 2 distance: 16.59 cm
+18:27:43.665 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:27:43.665 -> [MONITOR] Node 1 heartbeat received
+18:27:43.882 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat2
+18:27:43.882 -> [MONITOR] Node 2 heartbeat received
+18:27:44.798 -> [EXECUTE] Consensus distance: 16.01 cm (Active nodes: 2)
+18:27:45.401 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:27:46.612 -> [MONITOR] Received: 15.44 from esp32/system/sensor1/distance
+18:27:46.612 -> [MONITOR] Node 1 distance: 15.44 cm
+18:27:46.768 -> [EXECUTE] Consensus distance: 16.01 cm (Active nodes: 2)
+18:27:46.951 -> [MONITOR] Received: 16.56 from esp32/system/sensor2/distance
+18:27:46.951 -> [MONITOR] Node 2 distance: 16.56 cm
+18:27:48.650 -> [MONITOR] Received: ALIVE from esp32/system/heartbeat1
+18:27:48.686 -> [MONITOR] Node 1 heartbeat received
+18:27:48.766 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:27:50.423 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:27:50.766 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:27:52.797 -> [EXECUTE] Consensus distance: 16.00 cm (Active nodes: 2)
+18:27:54.764 -> [ANALYZE] Node 2 FAILED - No heartbeat for 10908 ms
+18:27:54.798 -> [EXECUTE] Consensus distance: 15.44 cm (Active nodes: 1)
+18:27:55.434 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:27:56.766 -> [EXECUTE] Consensus distance: 15.44 cm (Active nodes: 1)
+18:27:58.803 -> [ANALYZE] Node 1 FAILED - No heartbeat for 10114 ms
+18:28:00.373 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+18:28:05.365 -> [MONITOR] Received: ALIVE from esp32/system/manager/heartbeat
+
+
+
